@@ -1,0 +1,48 @@
+.card-container {
+  height: 50%;
+  margin-bottom: 2rem;
+}
+
+#card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 80%;
+  height: 15rem;
+  border-radius: 30px;
+  padding: 2rem;
+  cursor: pointer;
+}
+
+.main-text {
+  width: 100%;
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.main-text::first-letter {
+  text-transform: uppercase;
+}
+
+.question {
+  color: var(--dark-color);
+  background-image: linear-gradient(var(--color4), var(--color4-backdrop));
+}
+
+.answer {
+  color: var(--light-color);
+  background-image: linear-gradient(var(--color3), var(--color3-backdrop));
+}
+
+@media only screen and (max-width: 600px) {
+  #card {
+    width: 90%;
+  }
+
+  .main-text {
+    font-size: 2rem;
+  }
+}

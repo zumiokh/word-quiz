@@ -1,0 +1,35 @@
+:root {
+  --utility: #f85f73;
+  --utility-hover: #de3c51;
+  --proceed: #3dcc6a;
+  --proceed-hover: #36b35d;
+}
+
+.btn-utility {
+  font-size: 2rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  color: white;
+  border: 2px solid var(--utility);
+  background-color: var(--utility);
+}
+
+.btn-utility:hover {
+  background-color: var(--utility-hover);
+}
+
+.btn-remove {
+  font-size: 1.2rem;
+  background-color: transparent;
+  border: none;
+  margin-right: 0.5rem;
+}
+
+.btn-correct,
+.btn-wrong {
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 20px;
+  border: none;
+  padding: 0.8rem;
+}

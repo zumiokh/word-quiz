@@ -1,0 +1,18 @@
+nav {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  margin-bottom: 2rem;
+}
+
+.nav-btn {
+  margin-right: 1rem;
+}
+
+.text-logo {
+  font-size: 2rem;
+  margin-left: 1rem;
+  margin-right: auto;
+  color: var(--utility);
+  font-weight: 700;
+}
