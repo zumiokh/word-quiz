@@ -1,11 +1,5 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 
-const testData = [
-  { word: "test", meaning: "ทดสอบ" },
-  { word: "explanation", meaning: "คำอธิบาย" },
-  { word: "reveal", meaning: "เปิดเผย" },
-];
-
 const GameContext = createContext();
 
 const initialState = {
