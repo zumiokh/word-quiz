@@ -8,14 +8,16 @@ function Banner() {
     <div
       className={`${
         isBannerOpen ? "block" : "hidden"
-      } w-screen p-5 bg-stone-300 border-t border-stone-100 fixed bottom-0 left-0`}
+      } fixed bottom-0 left-0 w-screen border-t border-stone-100 bg-stone-300 p-5`}
     >
-      <span className="block font-bold text-base">Disclaimer</span>
-      <div className="flex gap-10 justify-center items-center">
-        <div className="text-sm">
-          This project is a personal project just for learning and practicing
-          React. If you see some bugs occur in the app, please navigate to the
-          app repository and leave a note there.
+      <div className="flex items-center justify-center gap-10">
+        <div>
+          <span className="block text-base font-bold">Disclaimer</span>
+          <div className="text-sm">
+            This project is a personal project just for learning and practicing
+            React. If you see some bugs occur in the app, please navigate to the
+            app repository and leave a note there.
+          </div>
         </div>
         <Button
           onClick={() => {
