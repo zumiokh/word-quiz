@@ -13,7 +13,12 @@ function FormEditWord() {
     const target = words.find((word) => word.id === id);
     const { word: oldWord, meaning: oldMeaning } = target;
 
-    // setIdToEdit(id);
+    if (newWord === oldWord && newMeaning === oldMeaning) {
+      reset();
+      return;
+    }
+
+    setIdToEdit(id);
   }
 
   function handleConfirmUpdate() {
