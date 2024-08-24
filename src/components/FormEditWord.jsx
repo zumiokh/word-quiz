@@ -43,6 +43,13 @@ function FormEditWord() {
     }
   }, [idToEdit, words]);
 
+  if (!words.length)
+    return (
+      <div className="mt-5 rounded-md bg-stone-300 p-3">
+        There are no words in the pool
+      </div>
+    );
+
   return (
     <>
       <table className="max-h-[200px] w-full">
