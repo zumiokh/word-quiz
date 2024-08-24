@@ -1,81 +1,60 @@
-import { useState } from "react";
-import Button from "./button";
-import "./formAddNewWord.css";
+import { useContext, useState } from "react";
+import Button from "./Button.jsx";
+import { useGame } from "../contexts/GameContext.jsx";
+import { nanoid } from "nanoid";
+import toast from "react-hot-toast";
+import { ModalContext } from "./Modal.jsx";
 
-export default function FormAddNewWord({
-  onAddWord,
-  onToggleForm,
-  setMessage,
-}) {
-  const [wordInput, setWordInput] = useState("");
-  const [meaningInput, setmeaningInput] = useState("");
+export default function FormAddNewWord() {
+  const [word, setWord] = useState("");
+  const [meaning, setMeaning] = useState("");
+  const { addNewWord } = useGame();
+  const { closeModal } = useContext(ModalContext);
 
-  function createNewWord(e) {
+  function handleAddWord(e) {
     e.preventDefault();
 
-    if (wordInput === "" || meaningInput === "") {
-      console.log("One or more inputs are empty");
+    if (word === "" || meaning === "") {
+      toast.error("Please provide a valid word/meaning");
       return;
     }
 
-    const cleanupWord = wordInput.toLowerCase();
+    const id = nanoid(10);
+    const newWord = { id, word, meaning };
+    addNewWord(newWord);
 
-    // cleanup input
-    const spaceRegex = /(\s+)/g;
-    const meaningArr = meaningInput.split(",");
-    const meaningArrClean = meaningArr.map((word) =>
-      word.replace(spaceRegex, "")
-    );
-
-    const newWord = {
-      id: crypto.randomUUID(),
-      word: cleanupWord,
-      meaning: [meaningArrClean],
-      multiplier: 0,
-    };
-
-    onAddWord(newWord);
-    setMessage("word added!");
-    onToggleForm();
-    console.log("You have successfully added a new word!");
+    setWord("");
+    setMeaning("");
+    toast.success("word added");
+    closeModal();
   }
 
   return (
-    <>
-      <div className="overlay"></div>
-      <div className="container flex-center">
-        <form className="form-add-word">
-          <h2>Add new word</h2>
-          <label htmlFor="vocab">Word: </label>
-          <input
-            id="vocab"
-            type="text"
-            value={wordInput}
-            onChange={(e) => setWordInput(e.target.value)}
-            required
-          />
-          <label htmlFor="meaning">Meaning: </label>
-          <input
-            id="meaning"
-            type="text"
-            value={meaningInput}
-            onChange={(e) => setmeaningInput(e.target.value)}
-            required
-          />
-          <div className="btn-container">
-            <Button
-              className="btn-add proceed"
-              onClick={createNewWord}
-              type="submit"
-            >
-              Add
-            </Button>
-            <Button className="btn-cancel utility" onClick={onToggleForm}>
-              Cancel
-            </Button>
-          </div>
-        </form>
-      </div>
-    </>
+    <div className="p-3 max-w-2xl mx-auto">
+      <form>
+        <label htmlFor="word" className="mr-3 block">
+          Word
+        </label>
+        <input
+          id="word"
+          type="text"
+          value={word}
+          onChange={(e) => setWord(e.target.value)}
+          className="mb-5 block w-full bg-stone-100 border border-stone-600 p-2 focus:outline-none focus:ring-2 focus:ring-sky-500"
+        />
+        <label htmlFor="word" className="mr-3 block">
+          Meaning
+        </label>
+        <input
+          id="word"
+          type="text"
+          value={meaning}
+          onChange={(e) => setMeaning(e.target.value)}
+          className="block w-full bg-stone-100 border border-stone-600 p-2 focus:outline-none mb-5 focus:ring-2 focus:ring-sky-500"
+        />
+
+        <Button onClick={handleAddWord}>Add word</Button>
+      </form>
+    </div>
   );
 }
