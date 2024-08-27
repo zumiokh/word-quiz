@@ -1,6 +1,6 @@
 {
   "homepage": "https://zumiokh.github.io/wordquiz-webapp",
-  "name": "flash-quiz",
+  "name": "word-quiz",
   "private": false,
   "version": "0.0.0",
   "type": "module",
